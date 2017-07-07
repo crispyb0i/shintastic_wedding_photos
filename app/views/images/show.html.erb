@@ -1,2 +1,13 @@
-<h1>Images#show</h1>
-<p>Find me in app/views/images/show.html.erb</p>
+<br>
+<h3>Photo by: <%=@user.email%></h3>
+<img src="<%=@image.url%>" alt="">
+<br>
+<%= link_to 'Delete Image', user_image_path, :method => 'delete'%>
+<br>
+<h4>Comments</h4>
+<% @comments.each do |comment| %>
+<p><%= comment.content %></p>
+<% end %>
+
+
+<%= link_to 'New Comment', new_user_image_comment_path(@user,@image) %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+
+  get 'comments/create'
+
   get 'users/show'
 
   get 'user/show'
@@ -16,6 +20,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
-      resources :images
+      resources :images do
+        resources :comments
+      end
     end
 end

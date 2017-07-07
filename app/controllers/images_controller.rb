@@ -23,10 +23,16 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @images.all
+    @user = User.find(params[:user_id])
+    @image = Image.find(params[:id])
+    @comments = Comment.all
   end
 
   def destroy
+    @user = current_user
+    @image = Image.find(params[:id])
+    @image.destroy
+    redirect_to '/'
   end
 
 private
