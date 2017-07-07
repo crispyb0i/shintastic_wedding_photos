@@ -1,0 +1,11 @@
+<h1><%= @user.email %></h1>
+<% if @images.length>0 %>
+  <% @images.each do |image| %>
+    <img src="<%=image.url%>" alt="">
+    <% end %>
+    <% else %>
+    <p>This photographer has no images yet</p>
+<% end %>
+<hr>
+
+<%= link_to 'New Image', new_user_image_path(@user) %>
