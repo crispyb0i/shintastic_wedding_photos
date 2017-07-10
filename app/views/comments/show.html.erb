@@ -1,0 +1,13 @@
+<br>
+
+<img src="<%=@image.url%>" alt="">
+
+<h4>comment by: <%= @user.email %></h4>
+
+<% if current_user && is_admin? %>
+  <h4><%= @comment.content %></h4>
+<% end %>
+
+<% if current_user && is_admin? %>
+  <%= link_to 'Delete Comment', user_image_comment_path, :method => 'delete' %>
+<% end %>

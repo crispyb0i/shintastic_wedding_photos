@@ -9,11 +9,17 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <%= link_to "Home", '/' %> | <%= link_to current_user.email, user_path(current_user) %> | <%= link_to "Sign out", destroy_user_session_path, :method =>'delete' %>
-    <% else %>
-      <%= link_to "Home", '/' %> | <%= link_to "Sign up", '/users/sign_up' %> | <%= link_to "Sign in", '/users/sign_in' %>
-    <% end %>
-    <%= yield %>
+    <div class="container">
+
+
+      <% if current_user && is_admin?%>
+        <%= link_to "Home", '/' %> | <%= link_to current_user.email, user_path(current_user) %> | <%= link_to "Sign out", destroy_user_session_path, :method =>'delete' %> | ADMIN
+      <% elsif current_user %>
+        <%= link_to "Home", '/' %> | <%= link_to current_user.email, user_path(current_user) %> | <%= link_to "Sign out", destroy_user_session_path, :method =>'delete' %>
+      <% else %>
+        <%= link_to "Home", '/' %> | <%= link_to "Sign up", '/users/sign_up' %> | <%= link_to "Sign in", '/users/sign_in' %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

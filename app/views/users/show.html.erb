@@ -7,5 +7,6 @@
     <p>This photographer has no images yet</p>
   <% end %>
 <hr>
-
-<%= link_to 'New Image', new_user_image_path(@user) %>
+<% if current_user && is_admin? %>
+  <%= link_to 'New Image', new_user_image_path(@user) %>
+<% end %>

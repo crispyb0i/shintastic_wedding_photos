@@ -8,7 +8,9 @@
 
 <h4>Certified Photographers</h4>
 <% @users.each do |user| %>
-  <%= link_to user.email, user_path(user) %>
+  <% if user.admin %>
+    <%= link_to user.email, user_path(user) %>
+  <% end %>
 <% end %>
 
 <br>

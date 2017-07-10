@@ -2,12 +2,14 @@
 <h3>Photo by: <%=@user.email%></h3>
 <img src="<%=@image.url%>" alt="">
 <br>
-<%= link_to 'Delete Image', user_image_path, :method => 'delete'%>
+<% if current_user && is_admin? %>
+  <%= link_to 'Delete Image', user_image_path, :method => 'delete'%>
+<% end %>
 <br>
 <h4>Comments</h4>
 <% @comments.each do |comment| %>
-<p><%= comment.content %></p>
-<% end %>
+  <p><%= link_to comment.content, user_image_comment_path(@user.id, @image.id,comment.id)%></p>
 
+<% end %>
 
 <%= link_to 'New Comment', new_user_image_comment_path(@user,@image) %>

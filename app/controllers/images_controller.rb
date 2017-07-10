@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @image = Image.find(params[:id])
-    @comments = Comment.all
+    @comments = Comment.where(image_id: @image.id)
   end
 
   def destroy
